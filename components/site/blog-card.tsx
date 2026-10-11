@@ -28,15 +28,15 @@ export function BlogCard({ post }: { post: BlogCardData }) {
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.18),transparent_70%)]">
-            <span className="font-display text-2xl font-bold text-gold/40">CopiPilot</span>
+          <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(ellipse_at_center,rgba(58,141,255,0.18),transparent_70%)]">
+            <span className="font-display text-2xl font-bold text-brand/40">CopiPilot</span>
           </div>
         )}
       </Link>
 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-center gap-3 text-xs text-faint">
-          {post.category && <Badge tone="gold">{post.category.name}</Badge>}
+          {post.category && <Badge tone="brand">{post.category.name}</Badge>}
           <span className="inline-flex items-center gap-1.5">
             <CalendarDays className="h-3.5 w-3.5" />
             {formatDate(post.publishedAt)}
@@ -44,7 +44,7 @@ export function BlogCard({ post }: { post: BlogCardData }) {
         </div>
 
         <h3 className="mt-3 font-display text-base font-semibold leading-snug text-foreground">
-          <Link href={`/blog/${post.slug}`} className="transition-colors hover:text-gold">
+          <Link href={`/blog/${post.slug}`} className="transition-colors hover:text-brand">
             {post.title}
           </Link>
         </h3>
@@ -54,7 +54,7 @@ export function BlogCard({ post }: { post: BlogCardData }) {
 
         <Link
           href={`/blog/${post.slug}`}
-          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold transition-colors hover:text-gold-bright"
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand transition-colors hover:text-brand-bright"
         >
           Read more
           <ArrowUpRight className="h-4 w-4" />

@@ -86,7 +86,7 @@ export default async function AdminTeamPage() {
                 <tr key={admin.id}>
                   <td className={tdClass}>
                     <span className="text-foreground">{admin.name}</span>
-                    {isSelf && <span className="ml-2 text-xs text-gold">you</span>}
+                    {isSelf && <span className="ml-2 text-xs text-brand">you</span>}
                   </td>
                   <td className={tdClass}>{admin.email}</td>
                   <td className={tdClass}>

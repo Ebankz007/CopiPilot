@@ -53,6 +53,6 @@ For a live CopiPilot site these are the highest-risk elements: they must be **CM
 ## 5. What "clone and rebrand" means here
 
 Clone the **marketing experience** (structure, rhythm, sections, interactions, responsiveness)
-with **original code, original copy, an original logo, and a gold/black palette**. Do **not**
+with **original code, original copy, an original logo, and a blue/navy palette**. Do **not**
 copy the reference's copy, images, logo, or affiliate links. The **admin CMS, database, client
 dashboard, and auth are net-new** — the reference has none.

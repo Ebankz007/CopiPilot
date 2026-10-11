@@ -70,7 +70,7 @@ export default async function DashboardOverviewPage() {
               key={c.label}
               className={
                 c.accent
-                  ? "rounded-2xl border border-gold/30 bg-gold/[0.06] p-5"
+                  ? "rounded-2xl border border-brand/30 bg-brand/[0.06] p-5"
                   : "rounded-2xl border border-border bg-card p-5"
               }
             >
@@ -78,7 +78,7 @@ export default async function DashboardOverviewPage() {
                 <span className="text-xs font-medium uppercase tracking-wider text-faint">
                   {c.label}
                 </span>
-                <Icon className="h-4 w-4 text-gold/70" />
+                <Icon className="h-4 w-4 text-brand/70" />
               </div>
               <p className="mt-3 font-display text-2xl font-bold text-foreground">
                 {c.value}
@@ -111,14 +111,14 @@ export default async function DashboardOverviewPage() {
             <h2 className="font-display text-base font-semibold text-foreground">
               Recent investments
             </h2>
-            <Link href="/dashboard/investments" className="text-xs text-gold hover:underline">
+            <Link href="/dashboard/investments" className="text-xs text-brand hover:underline">
               View all
             </Link>
           </div>
           {investments.length === 0 ? (
             <p className="text-sm text-faint">
               No investments yet.{" "}
-              <Link href="/dashboard/investments" className="text-gold hover:underline">
+              <Link href="/dashboard/investments" className="text-brand hover:underline">
                 Make your first investment
               </Link>
               .
@@ -156,7 +156,7 @@ export default async function DashboardOverviewPage() {
             <h2 className="font-display text-base font-semibold text-foreground">
               Recent activity
             </h2>
-            <Link href="/dashboard/transactions" className="text-xs text-gold hover:underline">
+            <Link href="/dashboard/transactions" className="text-xs text-brand hover:underline">
               View all
             </Link>
           </div>
@@ -193,13 +193,13 @@ export default async function DashboardOverviewPage() {
       {unread > 0 && (
         <Link
           href="/dashboard/notifications"
-          className="flex items-center justify-between rounded-2xl border border-gold/25 bg-gold/[0.06] p-5"
+          className="flex items-center justify-between rounded-2xl border border-brand/25 bg-brand/[0.06] p-5"
         >
           <span className="text-sm text-foreground">
-            You have <span className="font-semibold text-gold">{unread}</span> unread
+            You have <span className="font-semibold text-brand">{unread}</span> unread
             notification{unread > 1 ? "s" : ""}.
           </span>
-          <ArrowRight className="h-4 w-4 text-gold" />
+          <ArrowRight className="h-4 w-4 text-brand" />
         </Link>
       )}
 

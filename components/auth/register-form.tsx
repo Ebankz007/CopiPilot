@@ -90,7 +90,7 @@ export function RegisterForm() {
 
       <p className="text-center text-sm text-muted">
         Already have an account?{" "}
-        <Link href="/login" className="font-medium text-gold hover:underline">
+        <Link href="/login" className="font-medium text-brand hover:underline">
           Sign in
         </Link>
       </p>

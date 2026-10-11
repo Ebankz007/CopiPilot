@@ -35,7 +35,7 @@ export function StatsStrip({ stats }: { stats: StatData[] }) {
                 i < 3 && "lg:border-r lg:border-border",
               )}
             >
-              <p className="font-display text-3xl font-bold text-gradient-gold sm:text-4xl">
+              <p className="font-display text-3xl font-bold text-gradient-brand sm:text-4xl">
                 {num !== null ? (
                   <Counter value={num} decimals={decimals} suffix={stat.suffix ?? ""} />
                 ) : (

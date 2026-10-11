@@ -96,7 +96,7 @@ export default async function AdminInvestmentsPage() {
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5">
                 <span className="text-sm text-foreground">
                   {inv.user.email} · {inv.strategy.name} ·{" "}
-                  <span className="text-gold">{formatCurrency(inv.amount)}</span>
+                  <span className="text-brand">{formatCurrency(inv.amount)}</span>
                 </span>
                 <Badge tone={inv.status === "ACTIVE" ? "success" : "warning"}>
                   {inv.status}

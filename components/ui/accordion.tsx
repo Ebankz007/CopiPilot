@@ -28,7 +28,7 @@ export function Accordion({
               <span className="font-medium text-foreground">{item.question}</span>
               <Plus
                 className={cn(
-                  "h-4 w-4 shrink-0 text-gold transition-transform duration-300",
+                  "h-4 w-4 shrink-0 text-brand transition-transform duration-300",
                   isOpen && "rotate-45",
                 )}
               />

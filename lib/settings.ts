@@ -47,7 +47,7 @@ export type CalculatorSettings = {
 
 export const defaultSettings: SiteSettings = {
   siteName: "CopiPilot",
-  tagline: "Invest smarter. Grow with CopiPilot.",
+  tagline: "Investing made easy.",
   logoUrl: "/brand/copipilot-logo.svg",
   faviconUrl: "/favicon.ico",
   contactEmail: "hello@copipilot.com",
@@ -57,16 +57,16 @@ export const defaultSettings: SiteSettings = {
   telegram: "",
   socials: {},
   footerText:
-    "CopiPilot provides access to structured investment strategies and technology-driven financial solutions.",
+    "Your capital is deployed into a fully automated system that executes strategies and generates returns based on market performance.",
   copyright: `© ${new Date().getFullYear()} CopiPilot. All rights reserved.`,
-  defaultSeoTitle: "CopiPilot — Invest Smarter. Grow With CopiPilot.",
+  defaultSeoTitle: "CopiPilot — Grow Your Wealth With CopiPilot.",
   defaultSeoDescription:
-    "Access structured investment strategies and technology-driven financial solutions for modern investors.",
+    "Your capital is deployed into a fully automated system that executes strategies and generates returns based on market performance.",
   gaId: "",
   riskNotice:
     "Capital at risk. The value of investments can go down as well as up, and you may get back less than you invest. Projections shown are estimates only and do not guarantee future performance. Nothing on this site is financial advice.",
-  primaryColor: "#D4AF37",
-  secondaryColor: "#B8860B",
+  primaryColor: "#3a8dff",
+  secondaryColor: "#015bc4",
   maintenanceMode: false,
 };
 

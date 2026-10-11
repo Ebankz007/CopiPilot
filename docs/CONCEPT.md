@@ -7,7 +7,7 @@
 
 **CopiPilot is an investment platform — a premium marketing site, a client dashboard for
 deposits/investments/withdrawals, and a full admin CMS — built to the structure and user
-experience of the reference site `superflycapital.com`, rebranded and restyled gold/black, with
+experience of the reference site `superflycapital.com`, rebranded and restyled blue/navy, with
 a net-new database, secure auth, and an operational backend behind it.**
 
 ## 2. What it is

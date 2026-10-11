@@ -25,14 +25,14 @@ export function Switch({
       className={cn(
         "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border transition-colors",
         checked
-          ? "border-gold/50 bg-gold/30"
+          ? "border-brand/50 bg-brand/30"
           : "border-border-strong bg-elevated",
       )}
     >
       <span
         className={cn(
           "inline-block h-4 w-4 transform rounded-full transition-transform",
-          checked ? "translate-x-6 bg-gold" : "translate-x-1 bg-muted",
+          checked ? "translate-x-6 bg-brand" : "translate-x-1 bg-muted",
         )}
       />
     </button>

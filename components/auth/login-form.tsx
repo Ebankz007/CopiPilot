@@ -55,7 +55,7 @@ export function LoginForm() {
           <Label htmlFor="password">Password</Label>
           <Link
             href="/forgot-password"
-            className="text-xs font-medium text-gold hover:underline"
+            className="text-xs font-medium text-brand hover:underline"
           >
             Forgot password?
           </Link>
@@ -77,7 +77,7 @@ export function LoginForm() {
 
       <p className="text-center text-sm text-muted">
         New to CopiPilot?{" "}
-        <Link href="/register" className="font-medium text-gold hover:underline">
+        <Link href="/register" className="font-medium text-brand hover:underline">
           Create an account
         </Link>
       </p>

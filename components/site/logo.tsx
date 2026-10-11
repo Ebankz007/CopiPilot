@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 /**
- * CopiPilot mark — a gold navigation/autopilot chevron rising inside a
+ * CopiPilot mark — a brand navigation/autopilot chevron rising inside a
  * rounded tile. Original artwork; no third-party assets.
  */
 export function LogoMark({ className }: { className?: string }) {
@@ -13,10 +13,10 @@ export function LogoMark({ className }: { className?: string }) {
       role="img"
     >
       <defs>
-        <linearGradient id="cp-gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#F4D77D" />
-          <stop offset="50%" stopColor="#D4AF37" />
-          <stop offset="100%" stopColor="#B8860B" />
+        <linearGradient id="cp-brand" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#8bbeff" />
+          <stop offset="50%" stopColor="#3a8dff" />
+          <stop offset="100%" stopColor="#015bc4" />
         </linearGradient>
       </defs>
       <rect
@@ -25,19 +25,19 @@ export function LogoMark({ className }: { className?: string }) {
         width="38"
         height="38"
         rx="11"
-        fill="#0D0D0D"
-        stroke="url(#cp-gold)"
+        fill="#050b16"
+        stroke="url(#cp-brand)"
         strokeWidth="1.5"
       />
       {/* Autopilot chevron (paper-plane nose) */}
       <path
         d="M20 9 L30 24 L20 20 L10 24 Z"
-        fill="url(#cp-gold)"
+        fill="url(#cp-brand)"
       />
       {/* Rising baseline */}
       <path
         d="M11 29 H29"
-        stroke="url(#cp-gold)"
+        stroke="url(#cp-brand)"
         strokeWidth="2"
         strokeLinecap="round"
         opacity="0.7"
@@ -61,7 +61,7 @@ export function Logo({
       {showWordmark && (
         <span className="font-display text-lg font-bold tracking-tight text-foreground">
           {siteName}
-          <span className="text-gold">.</span>
+          <span className="text-brand">.</span>
         </span>
       )}
     </span>

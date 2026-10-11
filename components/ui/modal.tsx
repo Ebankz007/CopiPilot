@@ -127,7 +127,7 @@ export function ConfirmDialog({
               "h-10 rounded-xl px-4 text-sm font-semibold transition-all disabled:opacity-50",
               destructive
                 ? "bg-danger text-white hover:brightness-110"
-                : "bg-gold-gradient text-black hover:brightness-110",
+                : "bg-brand-gradient text-black hover:brightness-110",
             )}
           >
             {loading ? "Working…" : confirmLabel}

@@ -293,7 +293,7 @@ export async function updateSettingsAction(
     defaultSeoDescription: formData.get("defaultSeoDescription") ?? "",
     gaId: formData.get("gaId") ?? "",
     riskNotice: formData.get("riskNotice") ?? "",
-    primaryColor: formData.get("primaryColor") ?? "#D4AF37",
+    primaryColor: formData.get("primaryColor") ?? "#3a8dff",
     socials: {
       x: formData.get("socials_x") ?? "",
       linkedin: formData.get("socials_linkedin") ?? "",

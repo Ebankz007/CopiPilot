@@ -23,9 +23,9 @@ export function StatCard({ stat, delay = 0 }: { stat: StatData; delay?: number }
   return (
     <Reveal
       delay={delay}
-      className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-gold/30"
+      className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-brand/30"
     >
-      <div className="font-display text-3xl font-bold tracking-tight text-gold sm:text-4xl">
+      <div className="font-display text-3xl font-bold tracking-tight text-brand sm:text-4xl">
         {numeric !== null ? (
           <Counter
             value={numeric}

@@ -59,12 +59,12 @@ export function StrategyCard({ strategy }: { strategy: StrategyCardData }) {
     <div
       className={cn(
         "card card-hover relative flex h-full flex-col p-6",
-        strategy.isFeatured && "border-gold/40",
+        strategy.isFeatured && "border-brand/40",
       )}
     >
       {strategy.isFeatured && (
         <span className="absolute -top-3 left-6">
-          <Badge tone="gold">Featured</Badge>
+          <Badge tone="brand">Featured</Badge>
         </span>
       )}
 
@@ -95,7 +95,7 @@ export function StrategyCard({ strategy }: { strategy: StrategyCardData }) {
               className="rounded-xl border border-border bg-elevated/40 p-3"
             >
               <dt className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide text-faint">
-                <Icon className="h-3.5 w-3.5 text-gold/70" />
+                <Icon className="h-3.5 w-3.5 text-brand/70" />
                 {m.label}
               </dt>
               <dd className="mt-1 text-sm font-semibold text-foreground">
@@ -134,7 +134,7 @@ export function StrategyCard({ strategy }: { strategy: StrategyCardData }) {
 
       <Link
         href={`/strategies/${strategy.slug}`}
-        className="mt-3 text-center text-xs text-muted transition-colors hover:text-gold"
+        className="mt-3 text-center text-xs text-muted transition-colors hover:text-brand"
       >
         View full details
       </Link>

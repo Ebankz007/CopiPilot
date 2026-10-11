@@ -17,9 +17,9 @@ export function CtaBand({
   secondaryUrl?: string | null;
 }) {
   return (
-    <Reveal className="relative overflow-hidden rounded-3xl border border-gold/25 bg-gradient-to-br from-[#1a1708] via-[#12141a] to-[#0d0e12] px-6 py-14 text-center sm:px-12">
+    <Reveal className="relative overflow-hidden rounded-3xl border border-brand/25 bg-gradient-to-br from-[#0a1a2e] via-[#0b1c33] to-[#050b16] px-6 py-14 text-center sm:px-12">
       <div
-        className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-gold/20 blur-3xl"
+        className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-brand/20 blur-3xl"
         aria-hidden="true"
       />
       <h2 className="relative font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">

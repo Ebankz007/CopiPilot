@@ -77,7 +77,7 @@ export default async function BlogPage({
                 name="q"
                 defaultValue={q ?? ""}
                 placeholder="Search articles…"
-                className="h-11 w-full rounded-xl border border-border-strong bg-[#101010] pl-9 pr-3 text-sm text-foreground focus:border-gold/60 focus:outline-none focus:ring-2 focus:ring-gold/20"
+                className="h-11 w-full rounded-xl border border-border-strong bg-[#0a1a2e] pl-9 pr-3 text-sm text-foreground focus:border-brand/60 focus:outline-none focus:ring-2 focus:ring-brand/20"
               />
               {category && <input type="hidden" name="category" value={category} />}
             </form>
@@ -88,7 +88,7 @@ export default async function BlogPage({
                 className={cn(
                   "rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
                   !category
-                    ? "border-gold/50 bg-gold/10 text-gold"
+                    ? "border-brand/50 bg-brand/10 text-brand"
                     : "border-border text-muted hover:text-foreground",
                 )}
               >
@@ -101,7 +101,7 @@ export default async function BlogPage({
                   className={cn(
                     "rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
                     category === c.slug
-                      ? "border-gold/50 bg-gold/10 text-gold"
+                      ? "border-brand/50 bg-brand/10 text-brand"
                       : "border-border text-muted hover:text-foreground",
                   )}
                 >
@@ -127,8 +127,8 @@ export default async function BlogPage({
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.18),transparent_70%)]">
-                      <span className="font-display text-3xl font-bold text-gold/40">
+                    <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(ellipse_at_center,rgba(58,141,255,0.18),transparent_70%)]">
+                      <span className="font-display text-3xl font-bold text-brand/40">
                         CopiPilot
                       </span>
                     </div>
@@ -136,7 +136,7 @@ export default async function BlogPage({
                 </div>
                 <div className="flex flex-col justify-center p-7 sm:p-9">
                   <div className="flex items-center gap-3 text-xs text-faint">
-                    <Badge tone="gold">Featured</Badge>
+                    <Badge tone="brand">Featured</Badge>
                     {featured.category && <span>{featured.category.name}</span>}
                     <span>{formatDate(featured.publishedAt)}</span>
                   </div>
@@ -146,7 +146,7 @@ export default async function BlogPage({
                   <p className="mt-3 text-sm leading-relaxed text-muted">
                     {featured.excerpt}
                   </p>
-                  <span className="mt-5 text-sm font-medium text-gold">Read article →</span>
+                  <span className="mt-5 text-sm font-medium text-brand">Read article →</span>
                 </div>
               </Link>
             </Reveal>

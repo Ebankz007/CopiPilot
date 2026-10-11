@@ -28,7 +28,7 @@ export function AboutSection({
             <Reveal delay={120}>
               <div className="mt-8 grid gap-5 sm:grid-cols-2">
                 <div className="rounded-2xl border border-border bg-card p-5">
-                  <div className="flex items-center gap-2 text-gold">
+                  <div className="flex items-center gap-2 text-brand">
                     <Target className="h-4 w-4" />
                     <h3 className="text-sm font-semibold text-foreground">Our mission</h3>
                   </div>
@@ -38,7 +38,7 @@ export function AboutSection({
                   </p>
                 </div>
                 <div className="rounded-2xl border border-border bg-card p-5">
-                  <div className="flex items-center gap-2 text-gold">
+                  <div className="flex items-center gap-2 text-brand">
                     <Eye className="h-4 w-4" />
                     <h3 className="text-sm font-semibold text-foreground">Our vision</h3>
                   </div>
@@ -57,7 +57,7 @@ export function AboutSection({
                 const Icon = v.icon;
                 return (
                   <div key={v.title} className="card p-5">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-gold/25 bg-gold/10 text-gold">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand/25 bg-brand/10 text-brand">
                       <Icon className="h-5 w-5" />
                     </span>
                     <h3 className="mt-4 font-display text-sm font-semibold text-foreground">

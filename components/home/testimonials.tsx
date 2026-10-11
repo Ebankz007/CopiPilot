@@ -21,7 +21,7 @@ export function TestimonialsSection({
           {items.map((t, i) => (
             <Reveal key={t.id} delay={i * 70}>
               <figure className="card h-full p-6">
-                <Quote className="h-6 w-6 text-gold/50" />
+                <Quote className="h-6 w-6 text-brand/50" />
                 <blockquote className="mt-4 text-sm leading-relaxed text-muted">
                   {t.quote}
                 </blockquote>

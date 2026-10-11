@@ -54,7 +54,7 @@ export function ResetPasswordForm() {
         </p>
         <Link
           href="/forgot-password"
-          className="block text-sm font-medium text-gold hover:underline"
+          className="block text-sm font-medium text-brand hover:underline"
         >
           Request a new link
         </Link>

@@ -1,43 +1,48 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   CopiPilot design system — gold / black, premium financial.
-   Palette (per brand spec):
-     Primary Gold #D4AF37 · Rich Gold #B8860B · Light Gold #F4D77D
-     Dark Gold #8A6A16 · Black #080808 · Deep Background #0D0D0D
-     Dark Surface #151515 · White #FFFFFF · Muted #A8A8A8
-     Border rgba(212,175,55,0.20)
+   CopiPilot design system — dark navy / electric blue / mint.
+   Mirrors the superflycapital.com visual language (Elementor "Blue Premium"):
+     Brand Blue #3A8DFF · Light Blue #8BBEFF · Deep Blue #015BC4
+     Navy #022654 · Ink #040B14 · Mint #3BE6B0
+   Typography: Rethink Sans (display + body).
+
+   NOTE: utility/token names use the `brand` prefix. The palette block below is
+   the single source of truth — swap these values to re-skin the whole site.
    ========================================================================= */
 
 @theme {
   /* Surfaces */
-  --color-background: #0d0d0d;
-  --color-surface: #151515;
-  --color-card: #161616;
-  --color-elevated: #1e1e1e;
-  --color-border: rgba(212, 175, 55, 0.18);
-  --color-border-strong: rgba(212, 175, 55, 0.32);
+  --color-background: #050b16;
+  --color-surface: #0a1a2e;
+  --color-card: #0b1c33;
+  --color-elevated: #12274a;
+  --color-border: rgba(58, 141, 255, 0.18);
+  --color-border-strong: rgba(58, 141, 255, 0.34);
 
   /* Text */
   --color-foreground: #ffffff;
-  --color-muted: #a8a8a8;
-  --color-faint: #6f6f6f;
+  --color-muted: #9fb3cc;
+  --color-faint: #5f7691;
 
-  /* Brand — gold */
-  --color-gold: #d4af37;
-  --color-gold-bright: #f4d77d;
-  --color-gold-dark: #b8860b;
-  --color-gold-deep: #8a6a16;
-  --color-gold-soft: #e8d18a;
+  /* Brand — electric blue */
+  --color-brand: #3a8dff;
+  --color-brand-bright: #8bbeff;
+  --color-brand-dark: #015bc4;
+  --color-brand-deep: #022654;
+  --color-brand-soft: #c2e0ff;
+
+  /* Accent — mint */
+  --color-mint: #3be6b0;
 
   /* Status */
-  --color-success: #34d399;
-  --color-warning: #fbbf24;
+  --color-success: #3be6b0;
+  --color-warning: #ffd966;
   --color-danger: #f87171;
 
   /* Type */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: var(--font-space), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-rethink), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-rethink), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono-code), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Radii */
@@ -49,7 +54,7 @@
   /* Motion */
   --animate-fade-up: fade-up 0.6s ease-out both;
   --animate-marquee: marquee 40s linear infinite;
-  --animate-pulse-gold: pulse-gold 3s ease-in-out infinite;
+  --animate-pulse-brand: pulse-brand 3s ease-in-out infinite;
 }
 
 @keyframes fade-up {
@@ -72,7 +77,7 @@
   }
 }
 
-@keyframes pulse-gold {
+@keyframes pulse-brand {
   0%,
   100% {
     opacity: 0.55;
@@ -106,7 +111,7 @@ body {
 }
 
 ::selection {
-  background: rgba(212, 175, 55, 0.28);
+  background: rgba(58, 141, 255, 0.30);
   color: #fff;
 }
 
@@ -115,28 +120,28 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d0d0d;
+  background: #050b16;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2c2c2c;
+  background: #1b2c47;
   border-radius: 999px;
-  border: 2px solid #0d0d0d;
+  border: 2px solid #050b16;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3d3524;
+  background: #24406b;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-brand);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 /* ------------------------------------------------------------- helpers ---- */
 
-/* Gradient text: white → gold */
-.text-gradient-gold {
-  background: linear-gradient(135deg, #ffffff 0%, #f4d77d 55%, #d4af37 100%);
+/* Gradient text: white → light blue → brand blue */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #ffffff 0%, #8bbeff 55%, #3a8dff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -144,41 +149,41 @@ body {
 }
 
 .text-gradient-plain {
-  background: linear-gradient(180deg, #ffffff 0%, #cfcfcf 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #cfd9e6 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-/* Gold primary gradient surface */
-.bg-gold-gradient {
-  background-image: linear-gradient(135deg, #f4d77d 0%, #d4af37 45%, #b8860b 100%);
+/* Brand primary gradient surface */
+.bg-brand-gradient {
+  background-image: linear-gradient(135deg, #8bbeff 0%, #3a8dff 45%, #015bc4 100%);
 }
 
-.border-gold-gradient {
+.border-brand-gradient {
   border: 1px solid transparent;
   background:
     linear-gradient(var(--color-card), var(--color-card)) padding-box,
-    linear-gradient(135deg, rgba(244, 215, 125, 0.6), rgba(138, 106, 22, 0.15)) border-box;
+    linear-gradient(135deg, rgba(139, 190, 255, 0.6), rgba(1, 91, 196, 0.15)) border-box;
 }
 
 /* Ambient radial glow */
-.glow-gold {
+.glow-brand {
   position: relative;
 }
-.glow-gold::before {
+.glow-brand::before {
   content: "";
   position: absolute;
   inset: -40% -10% auto -10%;
   height: 420px;
-  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.16) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(58, 141, 255, 0.18) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
 }
 
 .card {
-  background: linear-gradient(160deg, #181818 0%, #131313 100%);
+  background: linear-gradient(160deg, #0c1e38 0%, #0a1830 100%);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-2xl);
 }
@@ -191,20 +196,20 @@ body {
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  border-color: rgba(212, 175, 55, 0.4);
-  box-shadow: 0 18px 40px -20px rgba(212, 175, 55, 0.35);
+  border-color: rgba(58, 141, 255, 0.42);
+  box-shadow: 0 18px 40px -20px rgba(58, 141, 255, 0.4);
 }
 
 .glass {
-  background: rgba(21, 21, 21, 0.72);
+  background: rgba(10, 26, 46, 0.72);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
 
-/* Hairline gold divider */
-.divider-gold {
+/* Hairline brand divider */
+.divider-brand {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(58, 141, 255, 0.5), transparent);
 }
 
 /* --------------------------------------------------- scroll reveal -------- */
@@ -309,7 +314,7 @@ body {
   color: var(--color-faint);
 }
 .prose-cp a {
-  color: var(--color-gold);
+  color: var(--color-brand);
   text-decoration: underline;
   text-underline-offset: 3px;
 }

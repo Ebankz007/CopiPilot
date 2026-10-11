@@ -13,7 +13,7 @@ export default function NotFound() {
         <Link href="/" aria-label="CopiPilot home" className="inline-block">
           <Logo />
         </Link>
-        <p className="mt-10 font-display text-7xl font-bold text-gold">404</p>
+        <p className="mt-10 font-display text-7xl font-bold text-brand">404</p>
         <h1 className="mt-4 font-display text-2xl font-bold text-foreground">
           This page has left the runway
         </h1>

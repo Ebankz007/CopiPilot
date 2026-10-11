@@ -82,7 +82,7 @@ export default async function AdminWithdrawalsPage() {
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5">
                 <span className="text-sm text-foreground">
                   {w.user.email} ·{" "}
-                  <span className="text-gold">{formatCurrency(w.amount)}</span> ·{" "}
+                  <span className="text-brand">{formatCurrency(w.amount)}</span> ·{" "}
                   {w.destination ?? w.method.replace("_", " ")}
                 </span>
                 <Badge tone="warning">PENDING</Badge>

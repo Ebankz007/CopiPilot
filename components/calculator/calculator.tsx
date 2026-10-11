@@ -36,7 +36,7 @@ export function InvestmentCalculator({
     <div className="grid gap-6 lg:grid-cols-[1.05fr_1fr]">
       {/* Inputs */}
       <div className="card p-6">
-        <div className="flex items-center gap-2 text-gold">
+        <div className="flex items-center gap-2 text-brand">
           <CalcIcon className="h-5 w-5" />
           <h3 className="font-display text-base font-semibold text-foreground">
             Configure your projection
@@ -49,7 +49,7 @@ export function InvestmentCalculator({
             <label htmlFor="calc-amount" className="text-sm font-medium text-foreground/90">
               Investment amount
             </label>
-            <span className="font-display text-sm font-semibold text-gold">
+            <span className="font-display text-sm font-semibold text-brand">
               {formatCurrency(amount)}
             </span>
           </div>
@@ -63,7 +63,7 @@ export function InvestmentCalculator({
               const v = Number(e.target.value);
               setAmount(Number.isFinite(v) ? Math.min(Math.max(v, 0), settings.maxAmount) : 0);
             }}
-            className="mt-2 h-11 w-full rounded-xl border border-border-strong bg-[#101010] px-3.5 text-sm text-foreground focus:border-gold/60 focus:outline-none focus:ring-2 focus:ring-gold/20"
+            className="mt-2 h-11 w-full rounded-xl border border-border-strong bg-[#0a1a2e] px-3.5 text-sm text-foreground focus:border-brand/60 focus:outline-none focus:ring-2 focus:ring-brand/20"
           />
           <input
             type="range"
@@ -73,7 +73,7 @@ export function InvestmentCalculator({
             step={Math.max(1, Math.round(settings.maxAmount / 500))}
             value={amount}
             onChange={(e) => setAmount(Number(e.target.value))}
-            className="mt-3 w-full accent-[#d4af37]"
+            className="mt-3 w-full accent-[#3a8dff]"
           />
           <div className="mt-3 flex flex-wrap gap-2">
             {QUICK_AMOUNTS.filter(
@@ -86,7 +86,7 @@ export function InvestmentCalculator({
                 className={cn(
                   "rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
                   amount === q
-                    ? "border-gold/50 bg-gold/10 text-gold"
+                    ? "border-brand/50 bg-brand/10 text-brand"
                     : "border-border text-muted hover:text-foreground",
                 )}
               >
@@ -108,7 +108,7 @@ export function InvestmentCalculator({
                 className={cn(
                   "rounded-lg border px-3.5 py-2 text-sm font-medium transition-colors",
                   months === m
-                    ? "border-gold/50 bg-gold/10 text-gold"
+                    ? "border-brand/50 bg-brand/10 text-brand"
                     : "border-border text-muted hover:text-foreground",
                 )}
               >
@@ -124,7 +124,7 @@ export function InvestmentCalculator({
             <label htmlFor="calc-rate" className="text-sm font-medium text-foreground/90">
               Monthly return rate
             </label>
-            <span className="font-display text-sm font-semibold text-gold">
+            <span className="font-display text-sm font-semibold text-brand">
               {rate.toFixed(1)}%
             </span>
           </div>
@@ -136,7 +136,7 @@ export function InvestmentCalculator({
             step={0.1}
             value={rate}
             onChange={(e) => setRate(Number(e.target.value))}
-            className="mt-3 w-full accent-[#d4af37]"
+            className="mt-3 w-full accent-[#3a8dff]"
           />
           <p className="mt-1.5 text-xs text-faint">
             Illustrative rate — not a promise of performance.
@@ -160,13 +160,13 @@ export function InvestmentCalculator({
             onClick={() => setReinvest((v) => !v)}
             className={cn(
               "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border transition-colors",
-              reinvest ? "border-gold/50 bg-gold/30" : "border-border-strong bg-elevated",
+              reinvest ? "border-brand/50 bg-brand/30" : "border-border-strong bg-elevated",
             )}
           >
             <span
               className={cn(
                 "inline-block h-4 w-4 transform rounded-full transition-transform",
-                reinvest ? "translate-x-6 bg-gold" : "translate-x-1 bg-muted",
+                reinvest ? "translate-x-6 bg-brand" : "translate-x-1 bg-muted",
               )}
             />
           </button>
@@ -185,7 +185,7 @@ export function InvestmentCalculator({
             return (
               <div key={s.label} className="rounded-xl border border-border bg-elevated/40 p-4">
                 <div className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide text-faint">
-                  <Icon className="h-3.5 w-3.5 text-gold/70" />
+                  <Icon className="h-3.5 w-3.5 text-brand/70" />
                   {s.label}
                 </div>
                 <p className="mt-1.5 font-display text-xl font-bold text-foreground">
@@ -206,14 +206,14 @@ export function InvestmentCalculator({
           <GrowthChart points={result.schedule} />
         </div>
 
-        <div className="mt-6 rounded-xl border border-gold/20 bg-gold/[0.06] p-4 text-center">
+        <div className="mt-6 rounded-xl border border-brand/20 bg-brand/[0.06] p-4 text-center">
           <p className="text-sm text-muted">Your investment could grow to</p>
-          <p className="mt-1 font-display text-3xl font-bold text-gradient-gold">
+          <p className="mt-1 font-display text-3xl font-bold text-gradient-brand">
             {formatCurrency(result.finalBalance)}
           </p>
           <p className="mt-1 text-xs text-muted">
             You could earn{" "}
-            <span className="font-semibold text-gold">
+            <span className="font-semibold text-brand">
               {formatCurrency(result.totalProfit)}
             </span>{" "}
             in estimated profit

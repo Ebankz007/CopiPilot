@@ -3,26 +3,23 @@ import {
   getFaqs,
   getHomepageSections,
   getPublishedPosts,
-  getStats,
   getStrategies,
-  getTestimonials,
 } from "@/lib/content";
-import { getSiteSettings } from "@/lib/settings";
+import { getCalculatorSettings, getSiteSettings } from "@/lib/settings";
 import { Hero, type HeroContent } from "@/components/home/hero";
-import { StatsStrip } from "@/components/home/stats-strip";
 import { HowItWorks, type StepItem } from "@/components/home/how-it-works";
 import { AboutSection } from "@/components/home/about-section";
 import { StrategiesSection } from "@/components/home/strategies-section";
+import { CalculatorSection } from "@/components/home/calculator-section";
 import { FaqSection } from "@/components/home/faq-section";
 import { BlogSection } from "@/components/home/blog-section";
 import { FinalCta } from "@/components/home/final-cta";
-import { TestimonialsSection } from "@/components/home/testimonials";
 import type { StrategyCardData } from "@/components/site/strategy-card";
 
 export const metadata: Metadata = {
-  title: "CopiPilot — Invest Smarter. Grow With CopiPilot.",
+  title: "CopiPilot — Grow Your Wealth With CopiPilot.",
   description:
-    "Access structured investment strategies and technology-driven financial solutions for modern investors.",
+    "Your capital is deployed into a fully automated system that executes strategies and generates returns based on market performance.",
 };
 
 function asRecord(value: unknown): Record<string, unknown> {
@@ -32,15 +29,14 @@ function asRecord(value: unknown): Record<string, unknown> {
 }
 
 export default async function HomePage() {
-  const [sections, stats, strategies, testimonials, faqs, posts, settings] =
+  const [sections, strategies, faqs, posts, settings, calculator] =
     await Promise.all([
       getHomepageSections(),
-      getStats(),
       getStrategies(),
-      getTestimonials(),
       getFaqs(),
       getPublishedPosts({ take: 3 }),
       getSiteSettings(),
+      getCalculatorSettings(),
     ]);
 
   const byKey = Object.fromEntries(sections.map((s) => [s.key, s]));
@@ -48,6 +44,7 @@ export default async function HomePage() {
   const howItWorks = byKey["how_it_works"];
   const about = byKey["about"];
   const strategiesSection = byKey["strategies"];
+  const calculatorSection = byKey["calculator"];
   const faqSection = byKey["faq"];
   const blogSection = byKey["blog"];
   const finalCta = byKey["final_cta"];
@@ -88,16 +85,6 @@ export default async function HomePage() {
         />
       )}
 
-      <StatsStrip
-        stats={stats.map((s) => ({
-          id: s.id,
-          label: s.label,
-          value: s.value,
-          suffix: s.suffix,
-          note: s.note,
-        }))}
-      />
-
       {howItWorks && (
         <HowItWorks
           eyebrow={howItWorks.eyebrow}
@@ -124,7 +111,14 @@ export default async function HomePage() {
         />
       )}
 
-      {testimonials.length > 0 && <TestimonialsSection items={testimonials} />}
+      {calculatorSection && (
+        <CalculatorSection
+          eyebrow={calculatorSection.eyebrow}
+          title={calculatorSection.title}
+          subtitle={calculatorSection.subtitle}
+          settings={calculator}
+        />
+      )}
 
       {faqSection && faqs.length > 0 && (
         <FaqSection
@@ -160,7 +154,7 @@ export default async function HomePage() {
         <FinalCta
           title={finalCta.title}
           subtitle={finalCta.subtitle}
-          ctaLabel={(finalContent.ctaLabel as string) ?? "Create your account"}
+          ctaLabel={(finalContent.ctaLabel as string) ?? "Get Private Access"}
           ctaUrl={(finalContent.ctaUrl as string) ?? "/register"}
         />
       )}

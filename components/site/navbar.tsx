@@ -70,7 +70,7 @@ export function Navbar({
                 rel={item.isExternal ? "noopener noreferrer" : undefined}
                 className={cn(
                   "rounded-lg px-3.5 py-2 text-sm font-medium transition-colors hover:bg-elevated hover:text-foreground",
-                  active ? "text-gold" : "text-muted",
+                  active ? "text-brand" : "text-muted",
                 )}
               >
                 {item.label}
@@ -91,7 +91,7 @@ export function Navbar({
                 Sign in
               </ButtonLink>
               <ButtonLink href="/register" variant="primary" size="sm">
-                Get started
+                Get Private Access
               </ButtonLink>
             </>
           )}
@@ -140,7 +140,7 @@ export function Navbar({
                   Sign in
                 </ButtonLink>
                 <ButtonLink href="/register" variant="primary" size="md">
-                  Get started
+                  Get Private Access
                 </ButtonLink>
               </>
             )}

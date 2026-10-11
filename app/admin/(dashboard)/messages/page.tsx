@@ -32,14 +32,14 @@ export default async function AdminMessagesPage() {
                 <div>
                   <p className="font-medium text-foreground">{m.name}</p>
                   <p className="text-xs text-muted">
-                    <a href={`mailto:${m.email}`} className="hover:text-gold">
+                    <a href={`mailto:${m.email}`} className="hover:text-brand">
                       {m.email}
                     </a>
                     {m.phone ? ` · ${m.phone}` : ""}
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Badge tone={m.status === "NEW" ? "gold" : "neutral"}>
+                  <Badge tone={m.status === "NEW" ? "brand" : "neutral"}>
                     {m.status}
                   </Badge>
                   <span className="text-xs text-faint">

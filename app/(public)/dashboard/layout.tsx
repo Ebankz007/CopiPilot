@@ -28,7 +28,7 @@ export default async function DashboardLayout({
             {user.fullName.split(" ")[0]}&apos;s dashboard
           </h1>
           <p className="mt-1 flex items-center gap-2 text-sm text-muted">
-            <Badge tone="gold">{user.role === "AFFILIATE" ? "Affiliate" : "Client"}</Badge>
+            <Badge tone="brand">{user.role === "AFFILIATE" ? "Affiliate" : "Client"}</Badge>
             <span>{user.email}</span>
           </p>
         </div>

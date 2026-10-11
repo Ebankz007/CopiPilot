@@ -213,7 +213,7 @@ export default async function AdminStrategiesPage() {
                 <Badge tone={s.status === "ACTIVE" ? "success" : "neutral"}>
                   {s.status.replace("_", " ")}
                 </Badge>
-                {s.isFeatured && <Badge tone="gold">Featured</Badge>}
+                {s.isFeatured && <Badge tone="brand">Featured</Badge>}
               </div>
             </summary>
             <div className="border-t border-border p-5">

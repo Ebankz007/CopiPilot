@@ -51,7 +51,7 @@ export default async function AboutPage() {
         <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <Reveal>
             <div className="card h-full p-7">
-              <div className="flex items-center gap-2 text-gold">
+              <div className="flex items-center gap-2 text-brand">
                 <Target className="h-4 w-4" />
                 <h2 className="font-display text-lg font-semibold text-foreground">
                   Our mission
@@ -66,7 +66,7 @@ export default async function AboutPage() {
           </Reveal>
           <Reveal delay={80}>
             <div className="card h-full p-7">
-              <div className="flex items-center gap-2 text-gold">
+              <div className="flex items-center gap-2 text-brand">
                 <Eye className="h-4 w-4" />
                 <h2 className="font-display text-lg font-semibold text-foreground">
                   Our vision
@@ -98,7 +98,7 @@ export default async function AboutPage() {
               return (
                 <Reveal key={v.title} delay={i * 70}>
                   <div className="card h-full p-6">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-gold/25 bg-gold/10 text-gold">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand/25 bg-brand/10 text-brand">
                       <Icon className="h-5 w-5" />
                     </span>
                     <h3 className="mt-4 font-display text-sm font-semibold text-foreground">

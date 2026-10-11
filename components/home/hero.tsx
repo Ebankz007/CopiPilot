@@ -1,4 +1,4 @@
-import { ArrowRight, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, ShieldCheck, TrendingUp } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/site/reveal";
@@ -12,6 +12,9 @@ export type HeroContent = {
   secondaryCtaUrl?: string;
   highlights?: string[];
 };
+
+/** Broker partners shown as a trust strip beneath the hero CTAs. */
+const BROKERS = ["Vantage", "PuPrime", "Ultima", "EC Markets"];
 
 const ILLUSTRATIVE = [
   { month: 0, balance: 1000 },
@@ -50,11 +53,11 @@ export function Hero({
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -top-24 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.20),transparent_65%)] blur-2xl"
+        className="pointer-events-none absolute -top-24 left-1/2 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(58,141,255,0.22),transparent_65%)] blur-2xl"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute bottom-0 right-0 h-[320px] w-[420px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(184,134,11,0.14),transparent_70%)] blur-2xl"
+        className="pointer-events-none absolute bottom-0 right-0 h-[320px] w-[420px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(1,91,196,0.16),transparent_70%)] blur-2xl"
         aria-hidden="true"
       />
 
@@ -62,9 +65,9 @@ export function Hero({
         {/* Copy */}
         <div>
           <Reveal>
-            <Badge tone="gold" className="gap-2">
-              <Sparkles className="h-3.5 w-3.5" />
-              {c.badge ?? eyebrow ?? "Structured investment strategies"}
+            <Badge tone="brand" className="gap-2">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              {c.badge ?? eyebrow ?? "Investing Made Easy"}
             </Badge>
           </Reveal>
 
@@ -85,7 +88,7 @@ export function Hero({
           <Reveal delay={220}>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href={c.primaryCtaUrl ?? "/register"} size="lg">
-                {c.primaryCtaLabel ?? "Get started"}
+                {c.primaryCtaLabel ?? "Click Here To Get Private Access"}
                 <ArrowRight className="h-4 w-4" />
               </ButtonLink>
               <ButtonLink
@@ -99,15 +102,20 @@ export function Hero({
           </Reveal>
 
           <Reveal delay={300}>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted">
-              <span className="inline-flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-gold" />
-                Risk-first approach
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-gold" />
-                Transparent, editable strategies
-              </span>
+            <div className="mt-10">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-faint">
+                Trusted broker partners
+              </p>
+              <div className="mt-3 flex flex-wrap items-center gap-x-7 gap-y-3">
+                {BROKERS.map((b) => (
+                  <span
+                    key={b}
+                    className="font-display text-base font-semibold text-muted/70 transition-colors hover:text-foreground"
+                  >
+                    {b}
+                  </span>
+                ))}
+              </div>
             </div>
           </Reveal>
         </div>
@@ -115,7 +123,7 @@ export function Hero({
         {/* Floating UI card */}
         <Reveal delay={200} className="relative">
           <div className="relative mx-auto max-w-md">
-            <div className="card border-gold/20 p-6 shadow-[0_40px_120px_-40px_rgba(212,175,55,0.35)]">
+            <div className="card border-brand/20 p-6 shadow-[0_40px_120px_-40px_rgba(58,141,255,0.4)]">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs uppercase tracking-wider text-faint">
@@ -125,7 +133,7 @@ export function Hero({
                     $1,000.00
                   </p>
                 </div>
-                <Badge tone="gold">Illustrative</Badge>
+                <Badge tone="brand">Illustrative</Badge>
               </div>
 
               <div className="mt-4">
@@ -139,7 +147,7 @@ export function Hero({
                 </div>
                 <div className="rounded-lg border border-border bg-elevated/40 py-2.5">
                   <p className="text-[11px] uppercase tracking-wide text-faint">Growth</p>
-                  <p className="text-sm font-semibold text-gold">+34.8%</p>
+                  <p className="text-sm font-semibold text-brand">+34.8%</p>
                 </div>
                 <div className="rounded-lg border border-border bg-elevated/40 py-2.5">
                   <p className="text-[11px] uppercase tracking-wide text-faint">Period</p>
@@ -148,9 +156,12 @@ export function Hero({
               </div>
             </div>
 
-            <div className="pointer-events-none absolute -bottom-5 -left-5 hidden rounded-xl border border-gold/20 bg-surface/90 px-4 py-3 shadow-xl backdrop-blur sm:block">
+            <div className="pointer-events-none absolute -bottom-5 -left-5 hidden rounded-xl border border-brand/20 bg-surface/90 px-4 py-3 shadow-xl backdrop-blur sm:block">
               <p className="text-[11px] uppercase tracking-wide text-faint">Active strategies</p>
-              <p className="font-display text-lg font-bold text-foreground">Managed &amp; automated</p>
+              <p className="flex items-center gap-1.5 font-display text-lg font-bold text-foreground">
+                <TrendingUp className="h-4 w-4 text-brand" />
+                Managed &amp; automated
+              </p>
             </div>
           </div>
         </Reveal>

@@ -48,7 +48,7 @@ export function ForgotPasswordForm() {
         <p className="text-sm text-muted">
           Check your inbox and follow the link to choose a new password.
         </p>
-        <Link href="/login" className="block text-sm font-medium text-gold hover:underline">
+        <Link href="/login" className="block text-sm font-medium text-brand hover:underline">
           Back to sign in
         </Link>
       </div>
@@ -70,7 +70,7 @@ export function ForgotPasswordForm() {
 
       <p className="text-center text-sm text-muted">
         Remembered it?{" "}
-        <Link href="/login" className="font-medium text-gold hover:underline">
+        <Link href="/login" className="font-medium text-brand hover:underline">
           Sign in
         </Link>
       </p>

@@ -2,7 +2,7 @@
 
 A premium investment-platform website **and** admin CMS — built to the structure and user
 experience of the reference site `superflycapital.com` (structure only; original code, copy,
-and branding), rebranded as **CopiPilot** with a gold/black premium identity, on an original
+and branding), rebranded as **CopiPilot** with a blue/navy premium identity, on an original
 implementation with a real database, real auth, and a full CMS.
 
 **Status:** built. Public site, client dashboard, admin CMS, RBAC, seed, tests, and deployment

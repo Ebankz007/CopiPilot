@@ -3,14 +3,14 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap select-none";
+  "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap select-none";
 
 export const buttonVariants = {
   primary:
-    "bg-gold-gradient text-black font-semibold hover:brightness-110 shadow-[0_10px_34px_-12px_rgba(212,175,55,0.65)] hover:shadow-[0_14px_40px_-12px_rgba(212,175,55,0.8)]",
+    "bg-brand-gradient text-black font-semibold hover:brightness-110 shadow-[0_10px_34px_-12px_rgba(58,141,255,0.65)] hover:shadow-[0_14px_40px_-12px_rgba(58,141,255,0.8)]",
   secondary:
-    "border border-border-strong bg-elevated text-foreground hover:border-gold/50 hover:text-gold",
-  outline: "border border-gold/40 text-gold hover:bg-gold/10",
+    "border border-border-strong bg-elevated text-foreground hover:border-brand/50 hover:text-brand",
+  outline: "border border-brand/40 text-brand hover:bg-brand/10",
   ghost: "text-muted hover:text-foreground hover:bg-elevated",
   danger: "bg-danger text-white hover:brightness-110",
   subtle: "bg-elevated text-foreground hover:bg-border",

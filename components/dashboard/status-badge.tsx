@@ -3,12 +3,12 @@ import { Badge, type BadgeTone } from "@/components/ui/badge";
 const TONES: Record<string, BadgeTone> = {
   PENDING: "warning",
   ACTIVE: "success",
-  COMPLETED: "gold",
+  COMPLETED: "brand",
   APPROVED: "success",
   REJECTED: "danger",
   FAILED: "danger",
   CANCELLED: "neutral",
-  NEW: "gold",
+  NEW: "brand",
   READ: "neutral",
   ARCHIVED: "neutral",
 };

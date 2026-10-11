@@ -33,7 +33,7 @@ export function Tabs({
             className={cn(
               "rounded-lg px-4 py-2 text-sm font-medium transition-colors",
               active === tab.id
-                ? "bg-gold-gradient text-black"
+                ? "bg-brand-gradient text-black"
                 : "text-muted hover:text-foreground",
             )}
           >

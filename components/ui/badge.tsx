@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const tones = {
-  gold: "border-gold/30 bg-gold/10 text-gold",
+  brand: "border-brand/30 bg-brand/10 text-brand",
   neutral: "border-border-strong bg-elevated text-muted",
   success: "border-success/30 bg-success/10 text-success",
   warning: "border-warning/30 bg-warning/10 text-warning",

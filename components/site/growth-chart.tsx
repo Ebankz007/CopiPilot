@@ -59,12 +59,12 @@ export function GrowthChart({
     >
       <defs>
         <linearGradient id="cp-chart-fill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#d4af37" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#d4af37" stopOpacity="0" />
+          <stop offset="0%" stopColor="#3a8dff" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#3a8dff" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="cp-chart-line" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#b8860b" />
-          <stop offset="100%" stopColor="#f4d77d" />
+          <stop offset="0%" stopColor="#015bc4" />
+          <stop offset="100%" stopColor="#8bbeff" />
         </linearGradient>
       </defs>
       {[0.25, 0.5, 0.75].map((f) => (
@@ -88,7 +88,7 @@ export function GrowthChart({
         strokeLinejoin="round"
         vectorEffect="non-scaling-stroke"
       />
-      <circle cx={last[0]} cy={last[1]} r="4" fill="#f4d77d" />
+      <circle cx={last[0]} cy={last[1]} r="4" fill="#8bbeff" />
     </svg>
   );
 }

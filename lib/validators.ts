@@ -230,8 +230,8 @@ export const settingsSchema = z.object({
   defaultSeoDescription: z.string().trim().max(400),
   gaId: optionalText(40),
   riskNotice: z.string().trim().max(2000),
-  primaryColor: z.string().trim().max(20).default("#D4AF37"),
-  secondaryColor: z.string().trim().max(20).default("#B8860B"),
+  primaryColor: z.string().trim().max(20).default("#3a8dff"),
+  secondaryColor: z.string().trim().max(20).default("#015bc4"),
   maintenanceMode: z.coerce.boolean().default(false),
   socials: z
     .object({

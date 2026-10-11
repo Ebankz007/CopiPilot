@@ -176,7 +176,7 @@ export default async function AdminBlogPage() {
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-2">
-                {post.isFeatured && <Badge tone="gold">Featured</Badge>}
+                {post.isFeatured && <Badge tone="brand">Featured</Badge>}
                 <Badge tone={post.status === "PUBLISHED" ? "success" : "neutral"}>
                   {post.status}
                 </Badge>

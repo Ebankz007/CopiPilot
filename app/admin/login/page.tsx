@@ -43,7 +43,7 @@ export default async function AdminLoginPage({
           </div>
         </div>
         <p className="mt-6 text-center text-xs text-faint">
-          <Link href="/" className="hover:text-gold">
+          <Link href="/" className="hover:text-brand">
             ← Back to site
           </Link>
         </p>

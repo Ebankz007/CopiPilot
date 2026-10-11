@@ -17,7 +17,7 @@ export function AuthShell({
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.16),transparent_65%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-[radial-gradient(ellipse_at_top,rgba(58,141,255,0.16),transparent_65%)]"
         aria-hidden="true"
       />
 
@@ -36,11 +36,11 @@ export function AuthShell({
         </div>
         <p className="mt-6 text-center text-xs text-faint">
           By continuing you agree to our{" "}
-          <Link href="/terms" className="text-muted hover:text-gold">
+          <Link href="/terms" className="text-muted hover:text-brand">
             Terms
           </Link>{" "}
           and{" "}
-          <Link href="/privacy" className="text-muted hover:text-gold">
+          <Link href="/privacy" className="text-muted hover:text-brand">
             Privacy Policy
           </Link>
           .

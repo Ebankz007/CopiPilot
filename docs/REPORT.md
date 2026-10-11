@@ -8,7 +8,7 @@
 **CopiPilot** — a premium investment platform: a marketing site, a client dashboard with a real
 money lifecycle (deposits, withdrawals, investments), and a full role-based admin CMS on
 PostgreSQL. Built to the structure and experience of the reference site `superflycapital.com`
-(structure only — original code, copy, and branding), restyled in the gold/black premium
+(structure only — original code, copy, and branding), restyled in the blue/navy premium
 identity, on an original implementation.
 
 The reference is a WordPress **lead-generation funnel** (no accounts, no backend, external broker

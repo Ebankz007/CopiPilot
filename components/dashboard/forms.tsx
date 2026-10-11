@@ -152,7 +152,7 @@ export function InvestForm({
           </div>
           <div>
             <p className="uppercase tracking-wide text-faint">Target</p>
-            <p className="mt-1 font-semibold text-gold">
+            <p className="mt-1 font-semibold text-brand">
               {selected.targetReturn != null
                 ? `${formatPercent(selected.targetReturn, 1)} ${selected.returnPeriod ?? ""}`.trim()
                 : "—"}

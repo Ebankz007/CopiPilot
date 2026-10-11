@@ -64,7 +64,7 @@ export default async function CalculatorPage() {
               return (
                 <Reveal key={p.title} delay={i * 70}>
                   <div className="card h-full p-6">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-gold/25 bg-gold/10 text-gold">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-brand/25 bg-brand/10 text-brand">
                       <Icon className="h-5 w-5" />
                     </span>
                     <h3 className="mt-4 font-display text-sm font-semibold text-foreground">

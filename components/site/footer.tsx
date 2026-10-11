@@ -57,7 +57,7 @@ export function Footer({
                 <p>
                   <a
                     href={`mailto:${settings.contactEmail}`}
-                    className="transition-colors hover:text-gold"
+                    className="transition-colors hover:text-brand"
                   >
                     {settings.contactEmail}
                   </a>
@@ -75,7 +75,7 @@ export function Footer({
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={name}
-                    className="rounded-lg border border-border p-2 text-muted transition-colors hover:border-gold/40 hover:text-gold"
+                    className="rounded-lg border border-border p-2 text-muted transition-colors hover:border-brand/40 hover:text-brand"
                   >
                     <SocialIcon name={name} />
                   </a>
@@ -85,13 +85,13 @@ export function Footer({
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Explore</h3>
+            <h3 className="text-sm font-semibold text-foreground">Quick Links</h3>
             <ul className="mt-4 space-y-2.5">
               {items.map((item) => (
                 <li key={item.id}>
                   <Link
                     href={item.url}
-                    className="text-sm text-muted transition-colors hover:text-gold"
+                    className="text-sm text-muted transition-colors hover:text-brand"
                   >
                     {item.label}
                   </Link>
@@ -101,31 +101,26 @@ export function Footer({
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Account</h3>
+            <h3 className="text-sm font-semibold text-foreground">Support</h3>
             <ul className="mt-4 space-y-2.5">
               <li>
-                <Link href="/login" className="text-sm text-muted transition-colors hover:text-gold">
-                  Sign in
+                <Link href="/privacy" className="text-sm text-muted transition-colors hover:text-brand">
+                  Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/register" className="text-sm text-muted transition-colors hover:text-gold">
-                  Create account
+                <Link href="/terms" className="text-sm text-muted transition-colors hover:text-brand">
+                  Terms &amp; Conditions
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard" className="text-sm text-muted transition-colors hover:text-gold">
-                  Client dashboard
+                <Link href="/faq" className="text-sm text-muted transition-colors hover:text-brand">
+                  Help Center
                 </Link>
               </li>
               <li>
-                <Link href="/calculator" className="text-sm text-muted transition-colors hover:text-gold">
-                  Investment calculator
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-sm text-muted transition-colors hover:text-gold">
-                  Contact
+                <Link href="/contact" className="text-sm text-muted transition-colors hover:text-brand">
+                  Online Support
                 </Link>
               </li>
             </ul>

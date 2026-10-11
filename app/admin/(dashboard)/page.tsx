@@ -93,13 +93,13 @@ export default async function AdminOverviewPage({
             <Link
               key={card.label}
               href={card.href}
-              className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-gold/40"
+              className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-brand/40"
             >
               <div className="flex items-center justify-between">
                 <span className="text-xs font-medium uppercase tracking-wider text-faint">
                   {card.label}
                 </span>
-                <Icon className="h-4 w-4 text-gold/70" />
+                <Icon className="h-4 w-4 text-brand/70" />
               </div>
               <p className="mt-3 font-display text-2xl font-bold text-foreground">
                 {card.value}
@@ -116,7 +116,7 @@ export default async function AdminOverviewPage({
             <h2 className="font-display text-base font-semibold text-foreground">
               Recent messages
             </h2>
-            <Link href="/admin/messages" className="text-xs text-gold hover:underline">
+            <Link href="/admin/messages" className="text-xs text-brand hover:underline">
               View all
             </Link>
           </div>
@@ -132,7 +132,7 @@ export default async function AdminOverviewPage({
                     </p>
                     <p className="truncate text-xs text-muted">{m.subject ?? m.message}</p>
                   </div>
-                  <Badge tone={m.status === "NEW" ? "gold" : "neutral"}>
+                  <Badge tone={m.status === "NEW" ? "brand" : "neutral"}>
                     {m.status}
                   </Badge>
                 </li>

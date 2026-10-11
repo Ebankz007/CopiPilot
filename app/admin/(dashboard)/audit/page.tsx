@@ -9,14 +9,14 @@ import { buttonClass } from "@/components/ui/button";
 const PAGE_SIZE = 50;
 const ACTIONS = ["CREATE", "UPDATE", "DELETE", "LOGIN", "LOGOUT"] as const;
 
-type Tone = "gold" | "neutral" | "success" | "warning" | "danger";
+type Tone = "brand" | "neutral" | "success" | "warning" | "danger";
 
 function actionTone(action: string): Tone {
   switch (action) {
     case "CREATE":
       return "success";
     case "UPDATE":
-      return "gold";
+      return "brand";
     case "DELETE":
       return "danger";
     case "LOGIN":
@@ -90,7 +90,7 @@ export default async function AdminAuditPage({
             name="entity"
             defaultValue={entity}
             placeholder="e.g. Page, PricingPlan"
-            className="w-56 rounded-lg border border-border-strong bg-surface px-3 py-2 text-sm text-foreground outline-none focus:border-gold"
+            className="w-56 rounded-lg border border-border-strong bg-surface px-3 py-2 text-sm text-foreground outline-none focus:border-brand"
           />
         </label>
         <label className="flex flex-col gap-1.5">
@@ -98,7 +98,7 @@ export default async function AdminAuditPage({
           <select
             name="action"
             defaultValue={action}
-            className="w-40 rounded-lg border border-border-strong bg-surface px-3 py-2 text-sm text-foreground outline-none focus:border-gold"
+            className="w-40 rounded-lg border border-border-strong bg-surface px-3 py-2 text-sm text-foreground outline-none focus:border-brand"
           >
             <option value="">All actions</option>
             {ACTIONS.map((a) => (
@@ -170,7 +170,7 @@ export default async function AdminAuditPage({
                     <td className={tdClass}>
                       {detail ? (
                         <details>
-                          <summary className="cursor-pointer text-xs text-gold hover:underline">
+                          <summary className="cursor-pointer text-xs text-brand hover:underline">
                             View
                           </summary>
                           <pre className="mt-2 max-w-md overflow-x-auto rounded-lg bg-surface p-3 text-xs text-muted">

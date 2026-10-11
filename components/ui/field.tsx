@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const fieldBase =
-  "w-full rounded-xl border border-border-strong bg-[#0e1014] px-3.5 py-2.5 text-sm text-foreground placeholder:text-faint transition-colors focus:border-gold/60 focus:outline-none focus:ring-2 focus:ring-gold/20 disabled:opacity-50";
+  "w-full rounded-xl border border-border-strong bg-[#0b1c33] px-3.5 py-2.5 text-sm text-foreground placeholder:text-faint transition-colors focus:border-brand/60 focus:outline-none focus:ring-2 focus:ring-brand/20 disabled:opacity-50";
 
 export const Input = React.forwardRef<
   HTMLInputElement,
@@ -68,7 +68,7 @@ export function Checkbox({
         name={name}
         type="checkbox"
         defaultChecked={defaultChecked}
-        className="h-4 w-4 shrink-0 cursor-pointer rounded border-border-strong bg-elevated accent-[#d4af37]"
+        className="h-4 w-4 shrink-0 cursor-pointer rounded border-border-strong bg-elevated accent-[#3a8dff]"
       />
       {label}
     </label>

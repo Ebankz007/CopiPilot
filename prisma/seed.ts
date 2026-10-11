@@ -7,7 +7,7 @@
  */
 import "dotenv/config";
 import bcrypt from "bcryptjs";
-import { PrismaClient } from "../lib/generated/prisma/client";
+import { PrismaClient, Prisma } from "../lib/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const connectionString = process.env.DATABASE_URL;
@@ -39,7 +39,7 @@ async function seedAdmin() {
 async function seedSettings() {
   const settings: Record<string, unknown> = {
     siteName: "CopiPilot",
-    tagline: "Invest smarter. Grow with CopiPilot.",
+    tagline: "Investing made easy.",
     logoUrl: "/brand/copipilot-logo.svg",
     faviconUrl: "/favicon.ico",
     contactEmail: "hello@copipilot.com",
@@ -54,16 +54,16 @@ async function seedSettings() {
       instagram: "",
     },
     footerText:
-      "CopiPilot provides access to structured investment strategies and technology-driven financial solutions.",
+      "Your capital is deployed into a fully automated system that executes strategies and generates returns based on market performance.",
     copyright: `© ${new Date().getFullYear()} CopiPilot. All rights reserved.`,
-    defaultSeoTitle: "CopiPilot — Invest Smarter. Grow With CopiPilot.",
+    defaultSeoTitle: "CopiPilot — Grow Your Wealth With CopiPilot.",
     defaultSeoDescription:
-      "Access structured investment strategies and technology-driven financial solutions for modern investors.",
+      "Your capital is deployed into a fully automated system that executes strategies and generates returns based on market performance.",
     gaId: "",
     riskNotice:
       "Capital at risk. The value of investments can go down as well as up, and you may get back less than you invest. Projections shown are estimates only and do not guarantee future performance. Nothing on this site is financial advice.",
-    primaryColor: "#D4AF37",
-    secondaryColor: "#B8860B",
+    primaryColor: "#3a8dff",
+    secondaryColor: "#015bc4",
     maintenanceMode: false,
   };
 
@@ -136,82 +136,115 @@ async function seedNavigation() {
 /* ------------------------------------------------------- homepage sections -- */
 
 async function seedHomepage() {
-  const sections = [
+  const sections: {
+    key: string;
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    order: number;
+    content?: Prisma.InputJsonValue;
+  }[] = [
     {
       key: "hero",
-      eyebrow: "Structured investing",
-      title: "Invest smarter. Grow with CopiPilot.",
+      eyebrow: "Investing Made Easy",
+      title: "Grow Your Wealth With CopiPilot",
       subtitle:
-        "Access structured investment strategies and technology-driven financial solutions built for modern investors.",
+        "Your capital is deployed into a fully automated system that executes strategies and generates returns based on market performance.",
       order: 1,
     },
     {
-      key: "how-it-works",
-      eyebrow: "How it works",
-      title: "From first deposit to a managed portfolio",
+      key: "how_it_works",
+      eyebrow: "How It Works",
+      title: "A simple step-by-step process",
       subtitle:
-        "A clear, four-step path — open an account, choose a strategy, invest, and track your growth.",
+        "A simple step-by-step process to activate your CopiPilot access and connect your account.",
+      content: {
+        steps: [
+          {
+            title: "Create Your Access Request",
+            body: "Start by submitting your basic details to begin the onboarding process. You'll gain access to the CopiPilot system setup.",
+          },
+          {
+            title: "Connect Your Account",
+            body: "Log in or create a new account and securely connect it to your CopiPilot access profile. This step ensures your account is ready for system integration.",
+          },
+          {
+            title: "System Activation & Tracking",
+            body: "Your account is linked to the automated strategy system, and performance activity is reflected through your dashboard.",
+          },
+        ],
+      },
       order: 2,
     },
     {
-      key: "strategies",
-      eyebrow: "Strategies",
-      title: "Strategies matched to your appetite",
+      key: "about",
+      eyebrow: "About us",
+      title: "Building Stronger Businesses Through Strategic Guidance",
       subtitle:
-        "From lower-risk income to higher-volatility growth, each strategy states its target and its risks plainly.",
+        "We believe every successful business and investment journey begins with a clear vision and a well-defined strategy. Our mission is to support entrepreneurs, businesses, traders, and investors with practical solutions that drive growth, improve performance, and create long-term value — backed by expertise in business consulting, investment research, market analysis, project planning, and strategic development.",
       order: 3,
     },
     {
-      key: "about",
-      eyebrow: "About CopiPilot",
-      title: "Discipline over speculation",
-      subtitle:
-        "We combine quantitative methods with risk-first portfolio construction — no hype, no hidden leverage.",
+      key: "strategies",
+      eyebrow: "Trading Systems",
+      title: "Smart Investing for Smarter Growth",
+      subtitle: "Transparent, value-driven strategies for modern investors.",
       order: 4,
     },
     {
-      key: "testimonials",
-      eyebrow: "Testimonials",
-      title: "Trusted by investors in 30+ countries",
-      subtitle: "Illustrative testimonials from clients describing their experience.",
+      key: "calculator",
+      eyebrow: "Investment Calculator",
+      title: "Calculate Your Potential Returns",
+      subtitle:
+        "See how your investment can grow with our advanced compound interest calculator.",
       order: 5,
     },
     {
       key: "faq",
       eyebrow: "FAQ",
-      title: "Questions, answered",
-      subtitle: "Everything you need to know before you invest.",
+      title: "We're here to help",
+      subtitle:
+        "Got questions? We've got answers. Explore common questions about our investment process, performance approach, and support.",
       order: 6,
     },
     {
       key: "blog",
-      eyebrow: "Insights",
-      title: "From the CopiPilot desk",
-      subtitle: "Market notes, education, and product updates.",
+      eyebrow: "Blog",
+      title: "Latest Blog & News",
+      subtitle:
+        "Expert guidance for business growth, investment success, and strategic planning. Backed by integrity and built for results.",
       order: 7,
     },
     {
-      key: "cta",
+      key: "final_cta",
       eyebrow: "Get started",
-      title: "Ready to put your capital to work?",
-      subtitle: "Open an account in minutes and choose a strategy that fits your goals.",
+      title: "Activate Your CopiPilot Access in Minutes",
+      subtitle:
+        "Your capital is deployed into a fully automated system that executes strategies and generates returns based on market performance.",
       order: 8,
     },
   ];
 
   for (const s of sections) {
+    const content = s.content ?? {};
     await prisma.homepageSection.upsert({
       where: { key: s.key },
       update: {
         eyebrow: s.eyebrow,
         title: s.title,
         subtitle: s.subtitle,
+        content,
         order: s.order,
         isEnabled: true,
       },
-      create: { ...s, isEnabled: true },
+      create: { ...s, content, isEnabled: true },
     });
   }
+  // Retire legacy section keys (e.g. the old "how-it-works" / "cta" / "testimonials").
+  await prisma.homepageSection.updateMany({
+    where: { key: { notIn: sections.map((s) => s.key) } },
+    data: { isEnabled: false },
+  });
   console.log(`  homepage sections: ${sections.length}`);
 }
 
@@ -236,103 +269,89 @@ async function seedStats() {
 async function seedStrategies() {
   const strategies = [
     {
-      slug: "global-momentum",
-      name: "Global Momentum",
+      slug: "copipilot-v1",
+      name: "CopiPilot V1",
       shortDescription:
-        "A quantitative momentum strategy across global equities and index futures, rebalanced monthly.",
+        "Perfect for individuals and small investors getting started with forex trading.",
       description:
-        "Global Momentum systematically allocates to assets showing persistent price strength across equities, indices, and major futures. Positions are rebalanced monthly and risk is capped with a volatility target.\n\nTarget returns are illustrative and not guaranteed. Capital is at risk.",
-      minInvestment: 500,
-      maxInvestment: 50000,
+        "CopiPilot V1 is our flagship automated forex strategy, built for investors who want a straightforward entry point. It trades major currency pairs with strict risk controls and a volatility-aware position-sizing model.\n\nPerformance figures are illustrative sample data and are not a promise of future results. Capital is at risk.",
+      minInvestment: 100,
+      maxInvestment: null,
       targetReturn: 18,
       returnPeriod: "annual",
       durationMonths: 12,
       riskLevel: "MEDIUM" as const,
-      strategyType: "Quantitative",
+      strategyType: "Forex",
       profitFactor: 1.8,
       maxDrawdown: 12.5,
       isFeatured: true,
       icon: "trending-up",
-      ctaLabel: "Invest in Global Momentum",
+      ctaLabel: "Join Now",
       terms:
         "Past performance is not indicative of future results. Returns shown are illustrative targets, not promises.",
+      status: "ACTIVE" as const,
       order: 1,
     },
     {
-      slug: "gold-metals",
-      name: "Gold & Metals",
+      slug: "copipilot-2",
+      name: "CopiPilot 2.0",
       shortDescription:
-        "A defensive allocation to precious and industrial metals, designed to hedge inflation and equity drawdowns.",
+        "Ideal for investors ready to expand their portfolio with commodities.",
       description:
-        "Gold & Metals holds a blend of precious and industrial metals, tactically adjusted for macro conditions. It is intended as a diversifier against inflation and equity-market stress.\n\nTarget returns are illustrative and not guaranteed. Capital is at risk.",
+        "CopiPilot 2.0 extends the system into commodities, blending precious and industrial metals with managed exposure. Launching soon — join the waitlist for early access.",
       minInvestment: 1000,
-      maxInvestment: 100000,
-      targetReturn: 14,
-      returnPeriod: "annual",
-      durationMonths: 12,
+      maxInvestment: null,
+      targetReturn: null,
+      returnPeriod: null,
+      durationMonths: null,
       riskLevel: "MEDIUM" as const,
       strategyType: "Commodities",
-      profitFactor: 1.5,
-      maxDrawdown: 10,
-      isFeatured: true,
+      profitFactor: null,
+      maxDrawdown: null,
+      isFeatured: false,
       icon: "gem",
-      ctaLabel: "Invest in Gold & Metals",
-      terms: "Metals can be volatile and may fall as well as rise.",
+      ctaLabel: "Join Now",
+      terms: "Launching soon. Details to be confirmed.",
+      status: "COMING_SOON" as const,
       order: 2,
     },
     {
-      slug: "income-yield",
-      name: "Income & Yield",
+      slug: "copipilot-3",
+      name: "CopiPilot 3.0",
       shortDescription:
-        "A lower-risk income strategy focused on short-duration credit and yield-bearing instruments.",
+        "Ideal for investors ready to expand their portfolio with commodities.",
       description:
-        "Income & Yield targets steady, lower-volatility income from short-duration credit and yield-bearing instruments. It prioritises capital preservation over headline growth.\n\nTarget returns are illustrative and not guaranteed.",
-      minInvestment: 250,
-      maxInvestment: 25000,
-      targetReturn: 9,
-      returnPeriod: "annual",
-      durationMonths: 6,
-      riskLevel: "LOW" as const,
-      strategyType: "Fixed income",
-      profitFactor: 1.2,
-      maxDrawdown: 4,
-      isFeatured: false,
-      icon: "piggy-bank",
-      ctaLabel: "Invest in Income & Yield",
-      terms: "Lower risk does not mean no risk. Capital is still at risk.",
-      order: 3,
-    },
-    {
-      slug: "alpha-growth",
-      name: "Alpha Growth",
-      shortDescription:
-        "A higher-volatility, multi-asset growth strategy for investors with a long horizon and high risk tolerance.",
-      description:
-        "Alpha Growth is an aggressive, multi-asset strategy that accepts greater short-term volatility in pursuit of long-term growth. Suitable only for investors who can tolerate significant drawdowns.\n\nTarget returns are illustrative and not guaranteed. Capital is at risk.",
-      minInvestment: 5000,
+        "CopiPilot 3.0 is our highest-capacity multi-asset program, designed for larger allocations across global markets. Launching soon — join the waitlist for early access.",
+      minInvestment: 10000,
       maxInvestment: null,
-      targetReturn: 26,
-      returnPeriod: "annual",
-      durationMonths: 24,
+      targetReturn: null,
+      returnPeriod: null,
+      durationMonths: null,
       riskLevel: "HIGH" as const,
       strategyType: "Multi-asset",
-      profitFactor: 2.1,
-      maxDrawdown: 25,
+      profitFactor: null,
+      maxDrawdown: null,
       isFeatured: false,
       icon: "rocket",
-      ctaLabel: "Invest in Alpha Growth",
-      terms: "High risk. Substantial losses are possible.",
-      order: 4,
+      ctaLabel: "Join Now",
+      terms: "Launching soon. Details to be confirmed.",
+      status: "COMING_SOON" as const,
+      order: 3,
     },
   ];
 
   for (const s of strategies) {
     await prisma.strategy.upsert({
       where: { slug: s.slug },
-      update: { ...s, status: "ACTIVE" },
-      create: { ...s, status: "ACTIVE" },
+      update: { ...s },
+      create: { ...s },
     });
   }
+  // Retire legacy strategies so they no longer surface anywhere on the site.
+  await prisma.strategy.updateMany({
+    where: { slug: { notIn: strategies.map((s) => s.slug) } },
+    data: { status: "INACTIVE" },
+  });
   console.log(`  strategies: ${strategies.length}`);
 }
 
@@ -378,46 +397,39 @@ async function seedFaqs() {
   await prisma.faq.deleteMany({});
   const faqs = [
     {
-      question: "How do I open an account?",
+      question: "How does CopiPilot work?",
       answer:
-        "Register with your email, confirm your details, and you can request your first deposit. Our team reviews every deposit before funds are credited.",
-      category: "Getting started",
+        "CopiPilot provides investors with access to professionally managed trading strategies designed to identify opportunities across global financial markets while maintaining a strong focus on risk management.",
+      category: "General",
       order: 1,
     },
     {
-      question: "How are returns calculated?",
+      question: "What is the minimum amount required to get started?",
       answer:
-        "Any figures shown are illustrative projections based on a target rate, not promises. Actual results depend on market conditions and can be negative.",
-      category: "Returns",
+        "The minimum investment amount varies depending on the investment program selected. Contact our team to discuss the most suitable option based on your financial goals.",
+      category: "Investing",
       order: 2,
     },
     {
-      question: "What is the minimum investment?",
+      question: "How do you manage risk?",
       answer:
-        "It depends on the strategy. Income & Yield starts at $250, Global Momentum at $500, and Alpha Growth at $5,000. Each strategy page states its minimum.",
-      category: "Investing",
+        "Capital preservation is a key priority. Our strategies incorporate strict risk management principles, including controlled exposure, disciplined position sizing, and ongoing market analysis.",
+      category: "Risk",
       order: 3,
     },
     {
-      question: "How do withdrawals work?",
+      question: "Can I access my funds when needed?",
       answer:
-        "Request a withdrawal from your dashboard. Requests are reviewed by our team before payout, and you can only withdraw your available balance.",
+        "Yes. Investors maintain access to their funds, subject to the terms and conditions of the selected investment program and applicable processing times.",
       category: "Withdrawals",
       order: 4,
     },
     {
-      question: "Is my capital at risk?",
+      question: "Why do investors choose CopiPilot?",
       answer:
-        "Yes. All investing involves risk. The value of investments can go down as well as up, and you may get back less than you invested.",
-      category: "Risk",
-      order: 5,
-    },
-    {
-      question: "Do you provide financial advice?",
-      answer:
-        "No. CopiPilot provides tools and structured strategies. Nothing on the platform is personal financial advice.",
+        "Investors choose CopiPilot for its disciplined risk management, transparent approach, and consistent process. All investing involves risk and future results cannot be guaranteed.",
       category: "General",
-      order: 6,
+      order: 5,
     },
   ];
   for (const f of faqs) {
@@ -560,7 +572,7 @@ async function seedDemoClient() {
     },
   });
 
-  const strategy = await prisma.strategy.findUnique({ where: { slug: "global-momentum" } });
+  const strategy = await prisma.strategy.findUnique({ where: { slug: "copipilot-v1" } });
   if (strategy) {
     const investment = await prisma.investment.create({
       data: {

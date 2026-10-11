@@ -46,20 +46,20 @@ export default async function BlogPostPage({
     <article className="pb-20">
       <header className="relative overflow-hidden border-b border-border pt-32 pb-12 sm:pt-40 sm:pb-14">
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.14),transparent_65%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(ellipse_at_top,rgba(58,141,255,0.14),transparent_65%)]"
           aria-hidden="true"
         />
         <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-gold"
+            className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-brand"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to blog
           </Link>
 
           <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-faint">
-            {post.category && <Badge tone="gold">{post.category.name}</Badge>}
+            {post.category && <Badge tone="brand">{post.category.name}</Badge>}
             <span className="inline-flex items-center gap-1.5">
               <CalendarDays className="h-3.5 w-3.5" />
               {formatDate(post.publishedAt)}
@@ -101,9 +101,9 @@ export default async function BlogPostPage({
           </div>
         )}
 
-        <div className="mt-10 rounded-2xl border border-gold/20 bg-gold/[0.06] p-6">
+        <div className="mt-10 rounded-2xl border border-brand/20 bg-brand/[0.06] p-6">
           <p className="text-xs leading-relaxed text-muted">
-            <span className="font-semibold text-gold">Risk notice: </span>
+            <span className="font-semibold text-brand">Risk notice: </span>
             Capital is at risk. The value of investments can go down as well as up, and
             you may get back less than you invest. Nothing in this article is financial
             advice.

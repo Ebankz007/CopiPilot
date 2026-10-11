@@ -36,7 +36,7 @@ export default async function InvestmentsPage({
   return (
     <div className="space-y-8">
       <div className="rounded-2xl border border-border bg-card p-5">
-        <div className="flex items-center gap-2 text-gold">
+        <div className="flex items-center gap-2 text-brand">
           <TrendingUp className="h-4 w-4" />
           <h2 className="font-display text-base font-semibold text-foreground">
             Make an investment

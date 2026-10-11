@@ -143,7 +143,7 @@ export default async function StrategyDetailPage({
                 <Badge tone={RISK_TONE[strategy.riskLevel] ?? "neutral"}>
                   {strategy.riskLevel} risk
                 </Badge>
-                {strategy.isFeatured && <Badge tone="gold">Featured</Badge>}
+                {strategy.isFeatured && <Badge tone="brand">Featured</Badge>}
                 <Badge tone={comingSoon ? "warning" : "success"}>
                   {comingSoon ? "Coming soon" : "Active"}
                 </Badge>
@@ -160,7 +160,7 @@ export default async function StrategyDetailPage({
                       className="rounded-xl border border-border bg-elevated/40 p-4"
                     >
                       <div className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide text-faint">
-                        <Icon className="h-3.5 w-3.5 text-gold/70" />
+                        <Icon className="h-3.5 w-3.5 text-brand/70" />
                         {m.label}
                       </div>
                       <p className="mt-1.5 text-sm font-semibold text-foreground">
@@ -202,18 +202,18 @@ export default async function StrategyDetailPage({
           {/* Sticky CTA */}
           <Reveal delay={100}>
             <div className="lg:sticky lg:top-28">
-              <div className="card border-gold/25 p-6">
+              <div className="card border-brand/25 p-6">
                 <p className="text-xs uppercase tracking-wider text-faint">
                   Minimum investment
                 </p>
-                <p className="mt-1 font-display text-3xl font-bold text-gradient-gold">
+                <p className="mt-1 font-display text-3xl font-bold text-gradient-brand">
                   {formatCurrency(strategy.minInvestment)}
                 </p>
 
                 {strategy.targetReturn != null && (
                   <p className="mt-3 text-sm text-muted">
                     Target{" "}
-                    <span className="font-semibold text-gold">
+                    <span className="font-semibold text-brand">
                       {formatPercent(strategy.targetReturn, 1)}
                     </span>{" "}
                     {strategy.returnPeriod ?? ""}
@@ -222,17 +222,17 @@ export default async function StrategyDetailPage({
 
                 <div className="mt-6 space-y-2.5 text-sm text-muted">
                   <p className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-gold" />
+                    <CheckCircle2 className="h-4 w-4 text-brand" />
                     {strategy.durationMonths
                       ? `${strategy.durationMonths}-month term`
                       : "Flexible term"}
                   </p>
                   <p className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-gold" />
+                    <CheckCircle2 className="h-4 w-4 text-brand" />
                     {strategy.riskLevel} risk profile
                   </p>
                   <p className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-gold" />
+                    <CheckCircle2 className="h-4 w-4 text-brand" />
                     Track everything in your dashboard
                   </p>
                 </div>
@@ -274,7 +274,7 @@ export default async function StrategyDetailPage({
             <div className="mt-8">
               <Link
                 href="/strategies"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-gold hover:text-gold-bright"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:text-brand-bright"
               >
                 View all strategies
                 <ArrowRight className="h-4 w-4" />

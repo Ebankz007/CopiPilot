@@ -17,7 +17,7 @@ export function FinalCta({
     <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl border border-gold/25 bg-[radial-gradient(ellipse_at_top_left,rgba(212,175,55,0.18),transparent_55%)] p-10 text-center sm:p-16">
+          <div className="relative overflow-hidden rounded-3xl border border-brand/25 bg-[radial-gradient(ellipse_at_top_left,rgba(58,141,255,0.18),transparent_55%)] p-10 text-center sm:p-16">
             <div
               className="pointer-events-none absolute inset-0 grid-lines opacity-30"
               aria-hidden="true"

@@ -82,7 +82,7 @@ export default async function AdminDepositsPage() {
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5">
                 <span className="text-sm text-foreground">
                   {d.user.email} ·{" "}
-                  <span className="text-gold">{formatCurrency(d.amount)}</span> ·{" "}
+                  <span className="text-brand">{formatCurrency(d.amount)}</span> ·{" "}
                   {d.method.replace("_", " ")}
                 </span>
                 <Badge tone="warning">PENDING</Badge>

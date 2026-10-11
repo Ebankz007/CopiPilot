@@ -6,7 +6,7 @@
 ## 0. The frame (locked)
 
 **CopiPilot** is an investment platform: a marketing site + client dashboard + content-managed
-admin CMS for a managed-investment product, positioned around a gold/black premium-fintech
+admin CMS for a managed-investment product, positioned around a blue/navy premium-fintech
 identity. **What we take from the reference:** the public marketing structure and journey.
 **What we add (net-new, the brief's real emphasis):** PostgreSQL, a complete admin CMS, secure
 auth, and a real client finance lifecycle.
@@ -148,7 +148,7 @@ JSON-LD `Organization` on home; admin-editable SEO defaults in `site_settings`.
 
 ## 8. Build order (as executed)
 
-1. **Scaffold** — Next 16 + TS + Tailwind; gold/black design tokens; fonts; layout.
+1. **Scaffold** — Next 16 + TS + Tailwind; blue/navy design tokens; fonts; layout.
 2. **Public site** — component library + all sections/pages wired to seed data → DB.
 3. **DB** — Prisma schema (24 models), migration `20261011064713_init`, idempotent seed.
 4. **Auth** — admin + user sessions, RBAC, rate limiting, password reset.

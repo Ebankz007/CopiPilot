@@ -1,16 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Rethink_Sans, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space",
+const rethink = Rethink_Sans({
+  variable: "--font-rethink",
   subsets: ["latin"],
   display: "swap",
 });
@@ -59,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d0d0d",
+  themeColor: "#050b16",
   width: "device-width",
   initialScale: 1,
 };
@@ -71,7 +65,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      className={`${rethink.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen bg-background text-foreground antialiased">
         {/* Reveal animations start hidden; without JS they must never stay hidden. */}
@@ -84,8 +78,8 @@ export default function RootLayout({
           position="top-right"
           toastOptions={{
             style: {
-              background: "#161616",
-              border: "1px solid rgba(212,175,55,0.2)",
+              background: "#0b1c33",
+              border: "1px solid rgba(58,141,255,0.2)",
               color: "#ffffff",
             },
           }}

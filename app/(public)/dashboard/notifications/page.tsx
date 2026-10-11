@@ -56,7 +56,7 @@ export default async function NotificationsPage() {
                 "rounded-2xl border p-4",
                 n.isRead
                   ? "border-border bg-card"
-                  : "border-gold/25 bg-gold/[0.05]",
+                  : "border-brand/25 bg-brand/[0.05]",
               )}
             >
               <div className="flex items-start justify-between gap-4">
@@ -64,7 +64,7 @@ export default async function NotificationsPage() {
                   <Bell
                     className={cn(
                       "mt-0.5 h-4 w-4 shrink-0",
-                      n.isRead ? "text-faint" : "text-gold",
+                      n.isRead ? "text-faint" : "text-brand",
                     )}
                   />
                   <div className="min-w-0">
@@ -75,7 +75,7 @@ export default async function NotificationsPage() {
                       {n.link && (
                         <>
                           {" · "}
-                          <Link href={n.link} className="text-gold hover:underline">
+                          <Link href={n.link} className="text-brand hover:underline">
                             View
                           </Link>
                         </>

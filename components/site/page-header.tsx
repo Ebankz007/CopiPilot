@@ -12,14 +12,14 @@ export function PageHeader({
   return (
     <section className="relative overflow-hidden border-b border-border pt-32 pb-14 sm:pt-40 sm:pb-16">
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(ellipse_at_top,rgba(212,175,55,0.14),transparent_65%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(ellipse_at_top,rgba(58,141,255,0.14),transparent_65%)]"
         aria-hidden="true"
       />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {eyebrow && (
           <Reveal>
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-              <span className="h-px w-6 bg-gold/60" />
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+              <span className="h-px w-6 bg-brand/60" />
               {eyebrow}
             </span>
           </Reveal>
