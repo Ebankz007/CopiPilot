@@ -1,29 +1,68 @@
 # CopiPilot
 
-> Status: **CONCEPT — framing in progress.** No stack chosen, no code yet. This repo is the home for the concept until the thesis is locked.
+A premium investment-platform website **and** admin CMS — built to the structure and user
+experience of the reference site `superflycapital.com` (structure only; original code, copy,
+and branding), rebranded as **CopiPilot** with a gold/black premium identity, on an original
+implementation with a real database, real auth, and a full CMS.
 
-CopiPilot is a new product concept. This file is the front door; the living thinking lives in [`docs/CONCEPT.md`](docs/CONCEPT.md).
+**Status:** built. Public site, client dashboard, admin CMS, RBAC, seed, tests, and deployment
+guide all in place (2026-10-11).
 
-## What this is (to be nailed down)
-The name is locked. The thesis is not. The first job is to answer the framing questions in `docs/CONCEPT.md` before any architecture is drawn.
-
-## Ground rules for this repo
-- **Concept first, code second.** No scaffolding until the target, the user, and the displacement thesis are agreed.
-- **Honest docs.** Unknowns are marked as unknowns, not papered over.
-- **Decisions are logged** with date + reasoning, so the concept has a memory.
-
-## Layout
 ```
-CopiPilot/
-  README.md          <- front door (this file)
-  docs/
-    CONCEPT.md       <- living concept doc: thesis, user, wedge, open questions
-  .gitignore
+docs/
+  AUDIT.md    audit of the reference site (routes, sections, claims, compliance flags)
+  PLAN.md     stack, routes, data model, security, build order
+  CONCEPT.md  the product frame
+  DEPLOY.md   aaPanel / production deployment guide
+  REPORT.md   final deliverable report (written at completion)
 ```
 
-## Open items (tracked in docs/CONCEPT.md)
-- [ ] What CopiPilot *is* — one sentence a stranger would understand
-- [ ] Who it serves, and the pain it removes
-- [ ] Displacement thesis vs. COPINEX / Aglotrends (avoid cannibalising existing ventures)
-- [ ] Wedge + first shippable slice
-- [ ] Regulatory posture (if it touches trading / money)
+## What this is
+
+- **Public site** — Home, About, Strategies (+ detail), Investment Calculator, Blog (+ detail),
+  FAQ, Contact, Login/Register, password reset, legal pages (CMS-backed `/[slug]`).
+- **Client dashboard** — portfolio overview, investments, deposits, withdrawals, transactions,
+  notifications, profile settings. Money moves are validated, rate-limited, and recorded as an
+  immutable transaction ledger.
+- **Admin CMS** — every meaningful word, strategy, price, blog post, FAQ, testimonial, stat,
+  homepage section, menu item, page, media file, and setting is editable from `/admin`, with
+  role-based access control and a full audit log.
+- **Stack** — Next.js 16 · React 19 · TypeScript (strict) · Tailwind 4 · PostgreSQL 16 · Prisma 7
+  · Zod 4 · Vitest.
+- **Security** — bcrypt-hashed passwords, revocable DB-backed session tokens in httpOnly cookies,
+  RBAC permission matrix, rate limiting on auth + contact, validated uploads, origin checks,
+  audit logging.
+
+## Quickstart
+
+```bash
+pnpm install
+# .env: DATABASE_URL, AUTH_SECRET, NEXT_PUBLIC_SITE_URL (see .env.example)
+pnpm db:generate
+pnpm db:migrate    # apply migrations
+pnpm db:seed       # idempotent demo content
+pnpm dev           # http://localhost:3400
+```
+
+Scripts: `dev` · `build` · `start` · `lint` · `typecheck` · `test` · `db:generate` ·
+`db:migrate` · `db:deploy` · `db:seed` · `db:studio`.
+
+### Demo accounts (seed)
+
+| Role | Email | Password |
+|---|---|---|
+| Super Admin | `admin@copipilot.com` | `Work@3428` |
+| Client | `client@copipilot.com` | `Work@3428` |
+
+Change these before any public deployment.
+
+## Compliance note
+
+This vertical (managed investments, deposits, withdrawals, advertised returns) is regulated in
+most jurisdictions. The seed content ships with **disclaimers and risk notices** and no
+guaranteed-return language, but the operator is responsible for legal review before going live.
+See `docs/CONCEPT.md` §7.
+
+---
+
+*Kairos :: frame before code.*

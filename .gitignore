@@ -9,6 +9,9 @@
 node_modules/
 .pnpm-store/
 
+# Prisma generated client
+lib/generated/
+
 # Build output
 dist/
 build/
@@ -16,7 +19,7 @@ build/
 out/
 *.tsbuildinfo
 
-# Runtime / generated
+# Runtime / generated media (created on demand)
 public/uploads/
 uploads/
 coverage/
