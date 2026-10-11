@@ -4,18 +4,12 @@ import { revalidatePath } from "next/cache";
 import { writeFile, mkdir, unlink } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import { prisma } from "@/lib/prisma";
-import { getCurrentAdmin } from "@/lib/auth";
+import { requirePermission } from "@/lib/auth";
 import { recordAudit } from "@/lib/audit";
 import { revalidatePublic } from "@/lib/revalidate";
 import { faqSchema, testimonialSchema } from "@/lib/validators";
 import { str, type ActionState } from "@/lib/form";
 import { getUploadDir, getUploadPath, getMaxUploadBytes } from "@/lib/uploads";
-
-async function guard() {
-  const admin = await getCurrentAdmin();
-  if (!admin) throw new Error("Unauthorized");
-  return admin;
-}
 
 /* ----------------------------------------------------------- testimonials */
 
@@ -23,7 +17,7 @@ export async function saveTestimonialAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const id = str(formData.get("id"));
   const parsed = testimonialSchema.safeParse({
     name: formData.get("name"),
@@ -65,7 +59,7 @@ export async function saveTestimonialAction(
 }
 
 export async function deleteTestimonialAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const id = str(formData.get("id"));
   await prisma.testimonial.delete({ where: { id } }).catch(() => {});
   await recordAudit({
@@ -84,7 +78,7 @@ export async function saveFaqAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("faq");
   const id = str(formData.get("id"));
   const parsed = faqSchema.safeParse({
     question: formData.get("question"),
@@ -115,7 +109,7 @@ export async function saveFaqAction(
 }
 
 export async function deleteFaqAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("faq");
   const id = str(formData.get("id"));
   await prisma.faq.delete({ where: { id } }).catch(() => {});
   await recordAudit({ adminId: admin.id, action: "DELETE", entity: "Faq", entityId: id });
@@ -126,7 +120,7 @@ export async function deleteFaqAction(formData: FormData): Promise<void> {
 /* ---------------------------------------------------------------- messages */
 
 export async function updateMessageStatusAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("messages");
   const id = str(formData.get("id"));
   const status = str(formData.get("status"));
   if (!["NEW", "READ", "ARCHIVED"].includes(status)) return;
@@ -146,7 +140,7 @@ export async function updateMessageStatusAction(formData: FormData): Promise<voi
 }
 
 export async function deleteMessageAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("messages");
   const id = str(formData.get("id"));
   await prisma.contactMessage.delete({ where: { id } }).catch(() => {});
   await recordAudit({
@@ -161,7 +155,7 @@ export async function deleteMessageAction(formData: FormData): Promise<void> {
 /* ------------------------------------------------------------------- users */
 
 export async function updateUserStatusAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("users");
   const id = str(formData.get("id"));
   const status = str(formData.get("status"));
   if (!["ACTIVE", "SUSPENDED"].includes(status)) return;
@@ -194,7 +188,7 @@ export async function uploadMediaAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("media");
   const file = formData.get("file");
   const alt = str(formData.get("alt"));
 
@@ -245,7 +239,7 @@ export async function uploadMediaAction(
 }
 
 export async function deleteMediaAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("media");
   const id = str(formData.get("id"));
   const media = await prisma.media.findUnique({ where: { id } });
   if (!media) return;

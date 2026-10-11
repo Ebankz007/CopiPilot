@@ -2,16 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
-import { getCurrentAdmin } from "@/lib/auth";
+import { requirePermission } from "@/lib/auth";
 import { recordAudit } from "@/lib/audit";
 import { formatCurrency } from "@/lib/money";
 import { str } from "@/lib/form";
-
-async function guard() {
-  const admin = await getCurrentAdmin();
-  if (!admin) throw new Error("Unauthorized");
-  return admin;
-}
 
 function revalidateFinance() {
   revalidatePath("/admin");
@@ -26,7 +20,7 @@ const INVESTMENT_STATUSES = ["PENDING", "ACTIVE", "COMPLETED", "CANCELLED"] as c
 type InvestmentStatus = (typeof INVESTMENT_STATUSES)[number];
 
 export async function updateInvestmentAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("investments");
   const id = str(formData.get("id"));
   const status = str(formData.get("status")) as InvestmentStatus;
   const note = str(formData.get("note"));
@@ -85,7 +79,7 @@ export async function updateInvestmentAction(formData: FormData): Promise<void> 
 }
 
 export async function updateInvestmentProfitAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("investments");
   const id = str(formData.get("id"));
   const raw = str(formData.get("profitLoss"));
   const profitLoss = Number(raw);
@@ -112,7 +106,7 @@ const TX_STATUSES = ["PENDING", "APPROVED", "COMPLETED", "REJECTED", "FAILED"] a
 type TxStatus = (typeof TX_STATUSES)[number];
 
 export async function updateDepositAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("deposits");
   const id = str(formData.get("id"));
   const status = str(formData.get("status")) as TxStatus;
   const note = str(formData.get("note"));
@@ -163,7 +157,7 @@ export async function updateDepositAction(formData: FormData): Promise<void> {
 /* ------------------------------------------------------------- withdrawals */
 
 export async function updateWithdrawalAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("withdrawals");
   const id = str(formData.get("id"));
   const status = str(formData.get("status")) as TxStatus;
   const note = str(formData.get("note"));

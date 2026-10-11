@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { prisma } from "@/lib/prisma";
-import { getCurrentAdmin } from "@/lib/auth";
+import { requirePermission } from "@/lib/auth";
 import { recordAudit } from "@/lib/audit";
 import { revalidatePublic } from "@/lib/revalidate";
 import { getClientIp } from "@/lib/rate-limit";
@@ -16,19 +16,13 @@ import {
 } from "@/lib/validators";
 import type { ActionState } from "@/lib/form";
 
-async function guard() {
-  const admin = await getCurrentAdmin();
-  if (!admin) throw new Error("Unauthorized");
-  return admin;
-}
-
 /* ------------------------------------------------------------------ pages */
 
 export async function createPageAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const parsed = pageSchema.safeParse({
     slug: formData.get("slug"),
     title: formData.get("title"),
@@ -71,7 +65,7 @@ export async function updatePageAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const id = String(formData.get("id") ?? "");
   if (!id) return { ok: false, error: "Missing page id." };
 
@@ -123,7 +117,7 @@ export async function updatePageAction(
 }
 
 export async function deletePageAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const id = String(formData.get("id") ?? "");
   const page = await prisma.page.findUnique({ where: { id } });
   if (!page) return;
@@ -146,7 +140,7 @@ export async function updateHomepageSectionAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const id = String(formData.get("id") ?? "");
   const key = String(formData.get("key") ?? "");
 
@@ -206,7 +200,7 @@ export async function createNavAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const parsed = navItemSchema.safeParse({
     label: formData.get("label"),
     url: formData.get("url"),
@@ -236,7 +230,7 @@ export async function updateNavAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const id = String(formData.get("id") ?? "");
   const parsed = navItemSchema.safeParse({
     label: formData.get("label"),
@@ -264,7 +258,7 @@ export async function updateNavAction(
 }
 
 export async function deleteNavAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const id = String(formData.get("id") ?? "");
   await prisma.navigationItem.delete({ where: { id } }).catch(() => {});
   await recordAudit({
@@ -283,7 +277,7 @@ export async function updateSettingsAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("settings");
   const parsed = settingsSchema.safeParse({
     siteName: formData.get("siteName"),
     tagline: formData.get("tagline") ?? "",

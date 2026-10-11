@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
-import { getCurrentAdmin } from "@/lib/auth";
+import { requirePermission } from "@/lib/auth";
 import { recordAudit } from "@/lib/audit";
 import { revalidatePublic, revalidateBlog } from "@/lib/revalidate";
 import {
@@ -14,12 +14,6 @@ import {
 } from "@/lib/validators";
 import { csv, str, type ActionState } from "@/lib/form";
 import { slugify } from "@/lib/utils";
-
-async function guard() {
-  const admin = await getCurrentAdmin();
-  if (!admin) throw new Error("Unauthorized");
-  return admin;
-}
 
 function num(value: FormDataEntryValue | null): number | undefined {
   const v = str(value);
@@ -38,7 +32,7 @@ export async function saveStatAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const id = str(formData.get("id"));
   const parsed = statSchema.safeParse({
     label: formData.get("label"),
@@ -77,7 +71,7 @@ export async function saveStatAction(
 }
 
 export async function deleteStatAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("content");
   const id = str(formData.get("id"));
   await prisma.stat.delete({ where: { id } }).catch(() => {});
   await recordAudit({ adminId: admin.id, action: "DELETE", entity: "Stat", entityId: id });
@@ -91,7 +85,7 @@ export async function saveStrategyAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("strategies");
   const id = str(formData.get("id"));
 
   const parsed = strategySchema.safeParse({
@@ -170,7 +164,7 @@ export async function saveStrategyAction(
 }
 
 export async function deleteStrategyAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("strategies");
   const id = str(formData.get("id"));
   await prisma.strategy.delete({ where: { id } }).catch(() => {});
   await recordAudit({
@@ -189,7 +183,7 @@ export async function saveCalculatorSettingsAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("calculator");
 
   const parsed = calculatorSettingsSchema.safeParse({
     defaultAmount: formData.get("defaultAmount") ?? 0,
@@ -246,7 +240,7 @@ export async function saveBlogPostAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("blog");
   const id = str(formData.get("id"));
 
   const parsed = blogPostSchema.safeParse({
@@ -319,7 +313,7 @@ export async function saveBlogPostAction(
 }
 
 export async function deleteBlogPostAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("blog");
   const id = str(formData.get("id"));
   const post = await prisma.blogPost.findUnique({ where: { id } });
   if (!post) return;
@@ -339,7 +333,7 @@ export async function saveBlogCategoryAction(
   _prev: ActionState | undefined,
   formData: FormData,
 ): Promise<ActionState> {
-  const admin = await guard();
+  const admin = await requirePermission("blog");
   const id = str(formData.get("id"));
   const parsed = blogCategorySchema.safeParse({
     name: formData.get("name"),
@@ -382,7 +376,7 @@ export async function saveBlogCategoryAction(
 }
 
 export async function deleteBlogCategoryAction(formData: FormData): Promise<void> {
-  const admin = await guard();
+  const admin = await requirePermission("blog");
   const id = str(formData.get("id"));
   await prisma.blogCategory.delete({ where: { id } }).catch(() => {});
   await recordAudit({
